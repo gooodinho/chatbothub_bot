@@ -22,10 +22,10 @@ async def enter_email(message: types.Message, state: FSMContext):
 @dp.message_handler(Command("phone"))
 async def add_email(message: types.Message, state: FSMContext):
     await message.answer("Пришлите Ваш номер телефона")
-    await state.set_state("phone")
+    await state.set_state("add_phone")
 
 
-@dp.message_handler(state="phone")
+@dp.message_handler(state="add_phone")
 async def enter_email(message: types.Message, state: FSMContext):
     phone = message.text
     db.update_phone(phone=phone, id=message.from_user.id)

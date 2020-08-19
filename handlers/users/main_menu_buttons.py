@@ -4,6 +4,7 @@ from aiogram.dispatcher import FSMContext
 from keyboards.default.main_menu import main_menu
 from keyboards.default.bots_page_menu import bots_menu
 from keyboards.default.question_menu import question_menu
+from keyboards.default.order_menu import order_menu
 from utils.notify_admins import question_notify
 from utils.misc import rate_limit
 from loader import dp
@@ -12,7 +13,6 @@ from loader import dp
 @rate_limit(1, "Для чего нужны чат-боты?👾")
 @dp.message_handler(text="Для чего нужны чат-боты?👾")
 async def get_bots_page(message: types.Message):
-    # CHANGE TEXT
     await message.answer("""<b>Что такое чат-бот?</b>
 
 Чат-бот — это программа, отправляющая автоматические ответы пользователям в соцсетях, мессенджерах и на сайтах. 
@@ -50,6 +50,12 @@ async def send_msg_to_adm(message: types.Message, state: FSMContext):
                                    "--------------------------------")
 
     await message.answer("В ближайшее время Вам прийдёт ответ в этом чате")
+
+
+@rate_limit(1, "Хочу заказать 😈")
+@dp.message_handler(text="Хочу заказать 😈")
+async def order_func(message: types.Message):
+    await message.answer("Выберите предпочтительный вариант связи", reply_markup=order_menu)
 
 
 @rate_limit(1, "⬅️Назад")
