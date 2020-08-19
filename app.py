@@ -9,10 +9,10 @@ async def on_startup(dp):
     middlewares.setup(dp)
 
     from utils.notify_admins import on_startup_notify
-    # try:
-    #     db.create_table_users()
-    # except Exception as e
-    #     print(e)
+    try:
+        db.create_table_users()
+    except Exception as e:
+        print(e)
     # db.delete_user()
     print(db.select_all_users())
     await on_startup_notify(dp, "Бот Запущен")
