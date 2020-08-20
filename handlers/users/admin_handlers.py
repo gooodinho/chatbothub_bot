@@ -27,7 +27,7 @@ async def show_all_users(call: CallbackQuery):
 
 @dp.callback_query_handler(admin_callback.filter(command="answer_user"))
 async def answer_user(call: CallbackQuery, state: FSMContext):
-    await call.answer(cache_time=60)
+    await call.answer(cache_time=2)
     user_id = call.message.text.partition('\n')[0]
     print(user_id)
     await state.set_state('question_answer')

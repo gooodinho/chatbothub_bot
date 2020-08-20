@@ -23,11 +23,3 @@ async def question_notify(dp: Dispatcher, text):
         except Exception as err:
             logging.exception(err)
 
-
-async def order_notify(dp: Dispatcher, text):
-    for admin in admins:
-        try:
-            await dp.bot.send_message(admin, text)
-
-        except Exception as err:
-            logging.exception(err)

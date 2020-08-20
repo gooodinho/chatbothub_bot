@@ -39,14 +39,13 @@ async def finish_questions(message: types.Message, state: FSMContext):
 @rate_limit(1)
 @dp.message_handler(state="questions")
 async def send_msg_to_adm(message: types.Message, state: FSMContext):
-    await question_notify(dp, text="--------------------------------"
-                                   f"<b>ID</b>{message.from_user.id}\n"
-                                   "--------------------------------"
+    await question_notify(dp, text=f"{message.from_user.id}\n"
+                                   "--------------------------------\n"
                                    f"<b>Full_name: </b>{message.from_user.full_name}\n"
-                                   "--------------------------------"
+                                   "--------------------------------\n"
                                    f"<b>Username: </b>{message.from_user.username}\n"
-                                   "--------------------------------"
-                                   f"<b>Сообщение: </b> {message.text}"
+                                   "--------------------------------\n"
+                                   f"<b>Сообщение: </b> {message.text}\n"
                                    "--------------------------------")
 
     await message.answer("В ближайшее время Вам прийдёт ответ в этом чате")
