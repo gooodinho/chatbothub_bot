@@ -71,8 +71,8 @@ class Database:
         sql = "UPDATE Users SET phone=? WHERE id=?"
         return self.execute(sql, parameters=(phone, id), commit=True)
 
-    def delete_user(self):
-        self.execute("DELETE FROM Users WHERE True")
+    def delete_all_users(self):
+        self.execute("DELETE FROM Users;", commit=True)
 
 
 def logger(statement):

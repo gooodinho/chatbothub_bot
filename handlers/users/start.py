@@ -30,11 +30,11 @@ async def bot_start(message: types.Message):
         await on_startup_notify(dp, "Новый пользователь: \n"
                                     f"<b>ID:</b> {message.from_user.id}\n"
                                     f"<b>Name:</b> {message.from_user.full_name}\n"
-                                    f"<b>Username:</b> {message.from_user.username}"
+                                    f"<b>Username:</b> {message.from_user.username}\n"
                                     f"<b>Всего на Базе:</b> {count_users}")
     except sqlite3.IntegrityError as err:
         print(err)
     # CHANGE TEXT
-    await message.answer(f'Здравствуйте! {name}'
+    await message.answer(f'Здравствуйте! {name}\n'
                          f'Будущее уже наступило и с Вами общается робот🤖',
                          reply_markup=main_menu)

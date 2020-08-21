@@ -13,7 +13,7 @@ async def on_startup(dp):
         db.create_table_users()
     except Exception as e:
         print(e)
-    # db.delete_user()
+    # db.delete_all_users()
     print(db.select_all_users())
     await on_startup_notify(dp, "Бот Запущен")
     await set_default_commands(dp)
