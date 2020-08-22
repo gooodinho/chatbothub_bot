@@ -31,7 +31,6 @@ async def show_all_users(call: CallbackQuery):
 async def answer_user(call: CallbackQuery, state: FSMContext):
     await call.answer(cache_time=2)
     user_id = call.message.text.partition('\n')[0]
-    print(user_id)
     await state.set_state('question_answer')
     await state.update_data(user_id=user_id)
     await bot.send_message(chat_id=call.message.chat.id, text=f"Ответить пользователю {user_id}:")
@@ -48,7 +47,6 @@ async def answer_text(message: types.Message, state: FSMContext):
 async def message_all_users(call: CallbackQuery, state: FSMContext):
     await call.answer(cache_time=2)
     users = [x[0] for x in db.select_all_users()]
-    print(users)
     await state.set_state("message_all_message")
     await state.update_data(users=users)
     await bot.send_message(chat_id=call.message.chat.id, text="Напишите сообщение для рассылки:",
